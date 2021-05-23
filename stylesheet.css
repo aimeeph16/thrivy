@@ -79,7 +79,7 @@
     font-weight: 400;
   }
 
-  .museosansrounded900-regular-normal-white-12px {
+  .museosansrounded900-regular-normal-white-14px {
     color: #FDD935;
     font-family: "MuseoSans Rounded 900-Regular", Helvetica;
     font-size: 14px;
@@ -134,9 +134,6 @@
     transition: all 0.5s;
   }
   
-  .header-right a:hover {
-    background-color: rgba(255, 255, 255, 0.3);
-  }
   .top{
       width: 100%;
   }
@@ -176,7 +173,7 @@
   
   /* When you mouse over the navigation links, change their color */
   .overlay a:hover, .overlay a:focus {
-    color: #f1f1f1;
+    color: #FDD935;
   }
   
   /* Position the close button (top right corner) */
