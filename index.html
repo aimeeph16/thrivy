@@ -23,12 +23,34 @@
                 <div class="thrivy museosansrounded900-regular-normal-white-18px"><b>THRIVY</b>
                 </div>
   
-                <div class="header-right museosansrounded900-regular-normal-white-12px">
-                  <a href="#">Sign in</a>
-                  <a href="#" class="login">Log in</a>
+                <div class="header-right">
+                  <div id="myNav" class="overlay">
+
+                    <!-- Button to close the overlay navigation -->
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                  
+                    <!-- Overlay content -->
+                    <div class="overlay-content">
+                      <a href="#">About</a>
+                      <a href="#">Shop</a>
+                      <a href="#">Contact</a>
+                    </div>
                 </div>
+                <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+
+<script>
+function openNav() {
+  document.getElementById("myNav").style.width = "100%";
+}
+
+function closeNav() {
+  document.getElementById("myNav").style.width = "0%";
+}
+</script>
+     
         
               </div>
+            </div>
             </div>
             
             <div class="flex-row-1">
