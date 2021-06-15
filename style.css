@@ -103,11 +103,11 @@
 	opacity: 92%;
 	
 	/* Defining the position on the right hand side */
-	/*position: fixed;
-	/*top: 0;
+	position: fixed;
+	top: 0;
 
 	/* Hiding the navigation bar on default */
-	/*right: -300px;
+	right: -300px;
 
 	/* Centering the items in the middle of the navigation bar */
 	display: flex;
