@@ -535,7 +535,7 @@ hr{
 .btn-checkout{
     float: right;
     margin-right: 4%;
-    margin-top: 20%;
+    margin-top: 40%;
     background-color: #696969;
     border: none;
     padding: 38px 84px;
@@ -552,6 +552,12 @@ hr{
 .btn {
     font-family: museo-sans-rounded, sans-serif;
     font-weight: 900;
+}
+.carttotal{
+    float:right;
+    margin-right: 4%;
+    margin-top: 16%;
+    
 }
 .carttotaltitle{
     font-family: museo-sans-rounded, sans-serif;
