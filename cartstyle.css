@@ -501,6 +501,7 @@ hr{
 .cartthumbnail{
     padding-left: 5%;
     display: flex;
+    width:30%
 }
 
 .cartname{
@@ -520,6 +521,7 @@ hr{
 }
 .cartquantity{
     padding-left: 5%;
+    height:20px;
 
 }
 .cartsubtotal{
