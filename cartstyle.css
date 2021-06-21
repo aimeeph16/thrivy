@@ -209,6 +209,31 @@ html{
 	color: #FDD935;
 }
 
+/* ===== EXIT BUTTON =====*/
+
+.exit-button {
+  background-color: black;
+  border: none;
+  outline: none;
+}
+
+.exit-btn {
+  width: 25px;
+  height: 25px;
+    
+  /* Defining the position on the right hand side */
+  position: fixed;
+  top: 50px;
+  right: 50px;
+    
+  cursor: pointer;
+
+  /* To separate the lines and give some space in between */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
 body{
 	margin: 0;
 	padding: 0;
