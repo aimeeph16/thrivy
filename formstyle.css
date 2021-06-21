@@ -243,6 +243,31 @@ img{
     font-style: normal;
 }
 
+/* ===== EXIT BUTTON =====*/
+
+.exit-button {
+  background-color: black;
+  border: none;
+  outline: none;
+}
+
+.exit-btn {
+  width: 35px;
+  height: 30px;
+    
+  /* Defining the position on the right hand side */
+  position: fixed;
+  top: 50px;
+  right: 50px;
+    
+  cursor: pointer;
+
+  /* To separate the lines and give some space in between */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
 /* ===== MEDIA QUERIES =====*/
 @media screen and (min-width: 576px){
   .login__forms{
