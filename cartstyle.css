@@ -488,7 +488,7 @@ hr{
 .cartrow{
     display: flex;
     margin-top: 10%;
-    margin-left: -28%;
+    margin-left: -20%;
     
 }
 
@@ -526,6 +526,7 @@ hr{
 .cartquantity{
     padding-left: 5%;
     height:20px;
+    width:100px;
 
 }
 .cartsubtotal{
