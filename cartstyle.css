@@ -501,7 +501,11 @@ hr{
 .cartthumbnail{
     padding-left: 5%;
     display: flex;
-    width:30%
+    
+}
+.thumbnailimg{
+    width:30%;
+    height: 30%;
 }
 
 .cartname{
