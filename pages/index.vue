@@ -1,86 +1,93 @@
 <template>
-  <div class="main-content">
-    <div class="section__content section__content--p30">
-      <div class="container-fluid">
+  <div>
+    <Slider v-if="sliderProducts.length" :sliderProducts="sliderProducts"></Slider>
+    <Slider></Slider>
+    <section>
+      <div class="container">
         <div class="row">
-          <div class="col-md-12">
-            <div class="overview-wrap">
-              <h2 class="title-1">overview</h2>
-            </div>
-          </div>
-        </div>
-        <div class="row m-t-25">
-          <div class="col-sm-6 col-lg-3">
-            <div class="overview-item overview-item--c1">
-              <div class="overview__inner">
-                <div class="overview-box clearfix">
-                  <div class="icon">
-                    <i class="zmdi zmdi-account-o"></i>
-                  </div>
-                  <div class="text">
-                    <h2>10368</h2>
-                    <span>members online</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-3">
-            <div class="overview-item overview-item--c2">
-              <div class="overview__inner">
-                <div class="overview-box clearfix">
-                  <div class="icon">
-                    <i class="zmdi zmdi-shopping-cart"></i>
-                  </div>
-                  <div class="text">
-                    <h2>388,688</h2>
-                    <span>items solid</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-3">
-            <div class="overview-item overview-item--c3">
-              <div class="overview__inner">
-                <div class="overview-box clearfix">
-                  <div class="icon">
-                    <i class="zmdi zmdi-calendar-note"></i>
-                  </div>
-                  <div class="text">
-                    <h2>1,086</h2>
-                    <span>this week</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-3">
-            <div class="overview-item overview-item--c4">
-              <div class="overview__inner">
-                <div class="overview-box clearfix">
-                  <div class="icon">
-                    <i class="zmdi zmdi-money"></i>
-                  </div>
-                  <div class="text">
-                    <h2>$1,060,386</h2>
-                    <span>total earnings</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="col-sm-12 padding-right">
+            <LatestItems v-if="latestProducts.length" :latestProducts="latestProducts"></LatestItems>
+            <FeaturedProducts v-if="featuredItems.length" :featuredItems="featuredItems"></FeaturedProducts>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 </template>
 
 <script>
+  
+  import {HomeApis} from '../api/home';
+  
+  import Slider from '../components/home-components/Slider';
+  import LatestItems from "../components/home-components/LatestItems";
+  import FeaturedProducts from "../components/home-components/FeaturedProducts";
+  
+
   export default {
-    name: "index"
+    components: {
+      FeaturedProducts,
+      LatestItems,
+      Slider
+    },
+    data() {
+      return {
+        sliderProducts: [],
+        latestProducts: [],
+        featuredItems: []
+      }
+    },
+    head() {
+      return {
+        title: 'Online Shop | Home',
+        meta: [
+          {
+            hid: 'description',
+            name: 'description',
+            content: 'Online Shop Home Page'
+          }
+        ]
+      }
+    },
+
+    mounted() {
+      // retrieve slider products
+      HomeApis.getSliderProducts(this.$axios).then(res => {
+        this.sliderProducts = res.products;
+      });
+      // retrieve latest items
+      HomeApis.getLatestProducts(this.$axios).then(res => {
+        this.latestProducts = res.products;
+      });
+      
+      // featured products
+      // Try to reduce the main products array into sub arrays, each array with 3 products in order for
+      // the bootstrap carousal to render them properly
+      HomeApis.getFeaturedProducts(this.$axios).then(res => {
+        if(res.products.length == 0) {
+          this.featuredItems = [];
+        } else {
+          const totalProducts = res.products.length;
+          const numCarousalItems = Math.ceil(totalProducts / 3);
+          for(let i = 0; i < numCarousalItems; i++) {
+            this.featuredItems.push({
+              id: i + '-' + i + '-' + i,
+              products: []
+            });
+          }
+          for(let i = 0; i < res.products.length; i++) {
+              const itemIndex = parseInt(i / 3);
+              if(this.featuredItems[itemIndex].products.length == 3) {
+                this.featuredItems[itemIndex + 1].products.push(res.products[i]);
+              } else {
+                this.featuredItems[itemIndex].products.push(res.products[i]);
+              }
+          }
+        }
+      });
+    }
+
   }
 </script>
-
-<style scoped>
+<style>
 </style>

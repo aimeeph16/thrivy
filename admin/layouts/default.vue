@@ -1,13 +1,22 @@
 <template>
   <div class="page-wrapper">
+
     <mobile-header></mobile-header>
+
     <admin-sidebar></admin-sidebar>
+
     <div class="page-container">
+
       <admin-header></admin-header>
+
       <Nuxt />
+
     </div>
+
   </div>
 </template>
+
+
 <script>
     import MobileHeader from "../components/partials/MobileHeader";
     import AdminSidebar from "../components/partials/AdminSidebar";
@@ -46,5 +55,6 @@
         }
     }
 </script>
+
 <style scoped>
 </style>
