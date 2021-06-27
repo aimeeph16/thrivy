@@ -23,29 +23,25 @@ export default {
       { hid: 'description', name: 'description', content: 'online shop dashboard' }
     ],
     link: [
-      { rel: 'stylesheet', type: 'text/css', href: '/assets2/aboutstyle.cscs' },
-      { rel: 'stylesheet', type: 'text/css', href: '/assets2/adminstyle.css' },
-      { rel: 'stylesheet', type: 'text/css', href: '/assets2/loginstyle.css' },
-      { rel: 'stylesheet', type: 'text/css', href: '/assets2/formstyle.css' },
-      { rel: 'stylesheet', type: 'text/css', href: '/assets2/shopstyle.css' },
-      { rel: 'stylesheet', type: 'text/css', href: '/assets2/style.css' },
-    
+      { rel: 'stylesheet', type: 'text/css', href: '/css/font-face.css' },
+      { rel: 'stylesheet', type: 'text/css', href: '/vendor/font-awesome-4.7/css/font-awesome.min.css' },
+      { rel: 'stylesheet', type: 'text/css', href: '/vendor/font-awesome-5/css/fontawesome-all.min.css' },
+      { rel: 'stylesheet', type: 'text/css', href: '/vendor/mdi-font/css/material-design-iconic-font.min.css' },
+      { rel: 'stylesheet', type: 'text/css', href: '/vendor/bootstrap-4.1/bootstrap.min.css' },
+      { rel: 'stylesheet', type: 'text/css', href: '/vendor/css-hamburgers/hamburgers.min.css' },
+      { rel: 'stylesheet', type: 'text/css', href: '/css/theme.css' }
     ],
     script: [
       {
-        src: '/assets2/app.js',
+        src: '/vendor/jquery-3.2.1.min.js',
         type: 'text/javascript'
       },
       {
-        src: '/assets2/script.js',
+        src: '/vendor/bootstrap-4.1/popper.min.js',
         type: 'text/javascript'
       },
       {
-        src: '/assets2/shopscript.js',
-        type: 'text/javascript'
-      },
-      {
-        src: '/assets2/aboutscript.js',
+        src: '/vendor/bootstrap-4.1/bootstrap.min.js',
         type: 'text/javascript'
       }
     ]
@@ -53,8 +49,12 @@ export default {
   /*
   ** Global CSS
   */
-  css: [
-  ],
+ css: [
+  'quill/dist/quill.core.css',
+  'quill/dist/quill.snow.css',
+  'quill/dist/quill.bubble.css'
+],
+
   /*
   ** Plugins to load before mounting the App
   ** https://nuxtjs.org/guide/plugins

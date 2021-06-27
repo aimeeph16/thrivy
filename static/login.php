@@ -1,45 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <?php include 'header.php';?>
-</head>
-    <body>
-        <div class="login">
-            <div class="login__content">
-                <div class="login__img">
-                    <img src="assets2/images/login-register.svg" alt="">
-                </div>
+    <?php include 'layout/styles-scripts.php';?>
+</head><!--/head-->
 
-                <div class="login__forms">
-                    <form action="" class="login__registre" id="login-in">
-                        <h1 class="login__title">Sign In</h1>
-    
-                        <div class="login__box">
-                            <i class='bx bx-user login__icon'></i>
-                            <input type="text" placeholder="Username" class="login__input">
-                        </div>
-    
-                        <div class="login__box">
-                            <i class='bx bx-lock-alt login__icon'></i>
-                            <input type="password" placeholder="Password" class="login__input">
-                        </div>
+<body>
+    <?php include 'layout/header.php';?>
+	
+	<section id="form" style="margin-top: 60px !important;"><!--form-->
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-1">
+					<div class="login-form"><!--login form-->
+						<h2>Login to your account</h2>
+						<form action="#">
+							<input type="text" placeholder="Name" />
+							<input type="email" placeholder="Email Address" />
+							<span>
+								<input type="checkbox" class="checkbox"> 
+								Keep me signed in
+							</span>
+							<button type="submit" class="btn btn-default">Login</button>
+						</form>
+					</div><!--/login form-->
+				</div>
+				<div class="col-sm-1">
+					<h2 class="or">OR</h2>
+				</div>
+				<div class="col-sm-4">
+					<div class="signup-form"><!--sign up form-->
+						<h2>New User Signup!</h2>
+						<form action="#">
+							<input type="text" placeholder="Name"/>
+							<input type="email" placeholder="Email Address"/>
+							<input type="password" placeholder="Password"/>
+							<button type="submit" class="btn btn-default">Signup</button>
+						</form>
+					</div><!--/sign up form-->
+				</div>
+			</div>
+		</div>
+	</section><!--/form-->
 
-                        <a href="#" class="login__forgot">Forgot password?</a>
 
-                        <a href="#" class="login__button">Sign In</a>
-
-                        <div>
-                            <span class="login__account">Don't have an Account ?</span>
-                            <a href="register.html" class="login__signin" id="sign-up">Sign Up</span>
-                        </div>
-                    </form>
-
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!--===== MAIN JS =====
-        <script src="login.js"></script>-->
-    </body>
+    <?php include 'layout/footer.php';?>
+</body>
 </html>

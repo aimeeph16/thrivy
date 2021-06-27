@@ -122,6 +122,28 @@ export const actions = {
         }).catch(err => {
           console.log(err);
         });
+
+        dispatch('category/showCategory', state.product.category_id, {root: true});
+        commit('resetFeatures');
+        setTimeout(() => {
+          if (rootState.category.features.length > 0) {
+            const features = [...rootState.category.features];
+            features.map(feature => {
+              let productFeatureValue = "";
+              if(response.product.features && response.product.features.find(f => f.field_id == feature.id) !== undefined) {
+                productFeatureValue = (response.product.features.find(f => f.field_id == feature.id)).field_value;
+              } else {
+                productFeatureValue = "";
+              }
+              commit('appendToFeatures', {
+                field_id: feature.id,
+                field_title: feature.field_title,
+                field_type: feature.field_type,
+                field_value: productFeatureValue
+              });
+            });
+          }
+        }, 200);
       },
       updateCategory({commit, router}, payload) {
         commit('shared/resetStatusMessagesParameters', null, {root: true});
