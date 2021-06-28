@@ -6,14 +6,16 @@
           <h2>${{ item.price_after_discount }}</h2>
           <del v-if="item.is_discount_active">${{ item.price }}</del>
           <p>{{ item.title_short }}</p>
-          <a href="javascript:void(0);" class="btn btn-default add-to-cart" @click.prevent="addToCart(item.id)"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+          <a v-if="!this.isProductAddedToCart(item.id)" href="javascript:void(0);" class="btn btn-default add-to-cart" @click.prevent="addToCart(item.id)"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+          <a v-if="this.isProductAddedToCart(item.id)" href="javascript:void(0);" class="btn btn-default add-to-cart" @click.prevent="removeFromCart(item.id)"><i class="fa fa-shopping-cart"></i>Remove from cart</a>
         </div>
         <div class="product-overlay">
           <div class="overlay-content">
             <h2>${{ item.price_after_discount }}</h2>
             <del v-if="item.is_discount_active">${{ item.price }}</del>
             <p>{{ item.title_short }}</p>
-            <a href="javascript:void(0);" class="btn btn-default add-to-cart" @click.prevent="addToCart(item.id)"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+            <a v-if="!this.isProductAddedToCart(item.id)" href="javascript:void(0);" class="btn btn-default add-to-cart" @click.prevent="addToCart(item.id)"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+            <a v-if="this.isProductAddedToCart(item.id)" href="javascript:void(0);" class="btn btn-default add-to-cart" @click.prevent="removeFromCart(item.id)"><i class="fa fa-shopping-cart"></i>Remove from cart</a>
           </div>
         </div>
         <div class="discount-ribbon" v-if="item.is_discount_active"><span>{{ item.discount }}%</span></div>
@@ -27,18 +29,26 @@
     </div>
 </template>
 <script>
+    import {addToCart, removeFromCartByProductId, isProductInCart} from '../../helpers/cart';
     export default {
         name: "ProductTemplateNormal",
         props: ["item"],
+        data() {
+          return {
+          }
+        },
         methods: {
-          methods: {
             addToCart(productId) {
+              addToCart(productId, 1, this.$store, this.$router);
             },
             addToWishList(productId) {
+            },
+            isProductAddedToCart(productId) {
+              return isProductInCart(productId, this.$store);
+            },
+            removeFromCart(productId) {
+              removeFromCartByProductId(productId, this.$store, this.$router);
             }
-          }
         }
     }
 </script>
-<style scoped>
-</style>

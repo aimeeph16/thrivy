@@ -7,68 +7,61 @@
 </template>
 <style>
 </style>
-
 <script>
-import FrontHeader from "../components/partials/FrontHeader";
-import FrontFooter from "../components/partials/FrontFooter";
+  import FrontHeader from "../components/partials/FrontHeader";
+  import FrontFooter from "../components/partials/FrontFooter";
   export default {
-    components: {FrontFooter, FrontHeader}
+    components: {FrontFooter, FrontHeader},
+    methods: {
+      isAuthenticated() {
+        if(process.browser) {
+          const user = JSON.parse(localStorage.getItem('user_data'));
+          if (localStorage.getItem('is_authenticated') === "1" && localStorage.getItem("auth_token") != null && user.id) {
+            this.$store.dispatch('general/storeAuthData', {auth_token: localStorage.getItem("auth_token"), user_data: user});
+          } else {
+            this.$store.dispatch('general/resetAuthData');
+            this.$store.commit('cart/clear');
+          }
+        }
+      },
+      checkUserLogin() {
+        if(process.browser) {
+          // send request to check if the user is logged
+          if (localStorage.getItem('auth_token') !== null && localStorage.getItem('auth_token') !== undefined) {
+            this.$axios.setHeader('Authorization', "Bearer " + localStorage.getItem('auth_token'));
+            this.$axios.$get('api/check-login').then(response => {
+              if (response.success !== 1) {
+                localStorage.removeItem('auth_token');
+                localStorage.removeItem('is_authenticated');
+                localStorage.removeItem('user_data');
+                this.$store.dispatch('general/resetAuthData');
+                this.$store.commit('cart/clear');
+                this.$router.push("/");
+              }
+            }).catch(err => {
+              localStorage.removeItem('auth_token');
+              localStorage.removeItem('is_authenticated');
+              localStorage.removeItem('user_data');
+              this.$store.dispatch('general/resetAuthData');
+              this.$store.commit('cart/clear');
+              this.$router.push("/");
+            });
+          } else {
+            this.$store.dispatch('general/resetAuthData');
+          }
+        }
+      }
+    },
+    mounted() {
+      this.isAuthenticated();
+      const verify = setInterval(this.checkUserLogin, 8000);
+      if(!this.$store.state.general.auth.is_logged || !this.$store.state.general.auth.auth_token) {
+        clearInterval(verify);
+      }
+      // fetch shopping cart
+      if(localStorage.getItem('is_authenticated') === "1" && localStorage.getItem("auth_token") != null) {
+        this.$store.dispatch('cart/getAll');
+      }
+    }
   }
 </script>
-
-<style>
-html {
-  font-family:
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
-}
-</style>
