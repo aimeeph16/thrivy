@@ -133,6 +133,7 @@ export const actions = {
         commit('shared/setStatusMessageParameter', {key: 'success_message', val: response.message}, {root: true});
       }
     }).catch(err => {
+      dispatch('showValidationErrors', err);
       console.log(err);
     }).finally(() => {
       setTimeout(() => {

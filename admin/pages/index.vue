@@ -18,7 +18,7 @@
                     <i class="zmdi zmdi-account-o"></i>
                   </div>
                   <div class="text">
-                    <h2>10368</h2>
+                    <h2>{{ this.total_members > 0 ? this.total_members : 'none' }}</h2>
                     <span>members online</span>
                   </div>
                 </div>
@@ -33,7 +33,7 @@
                     <i class="zmdi zmdi-shopping-cart"></i>
                   </div>
                   <div class="text">
-                    <h2>388,688</h2>
+                    <h2>{{ this.total_items_sold > 0 ? this.total_items_sold : 'none' }}</h2>
                     <span>items solid</span>
                   </div>
                 </div>
@@ -48,7 +48,7 @@
                     <i class="zmdi zmdi-calendar-note"></i>
                   </div>
                   <div class="text">
-                    <h2>1,086</h2>
+                    <h2>{{ this.total_items_week > 0 ? this.total_items_week : 'none' }}</h2>
                     <span>this week</span>
                   </div>
                 </div>
@@ -63,7 +63,7 @@
                     <i class="zmdi zmdi-money"></i>
                   </div>
                   <div class="text">
-                    <h2>$1,060,386</h2>
+                    <h2>{{ this.total_earnings !== 0 ? '$' + this.total_earnings : 'none' }}</h2>
                     <span>total earnings</span>
                   </div>
                 </div>
@@ -77,8 +77,23 @@
 </template>
 <script>
   export default {
-    name: "index"
+    name: "index",
+    middleware: "auth",
+    data() {
+      return {
+        total_members: 0,
+        total_items_sold: 0,
+        total_items_week: 0,
+        total_earnings: 0
+      }
+    },
+    mounted() {
+      this.$axios.$get('/api/dashboard').then(response => {
+        this.total_members = response.totalMembers;
+        this.total_items_sold = response.totalItemsSold;
+        this.total_items_week = response.totalItemsThisWeek;
+        this.total_earnings = response.totalEarnings;
+      });
+    }
   }
 </script>
-<style scoped>
-</style>
