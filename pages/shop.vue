@@ -96,9 +96,10 @@
      margin-bottom: 30px !important;
    }
   .no-products {
-    color: #696763;
+    color: #FDD935;
+    font-family: "Museo-sans-rounded", sans-serif;
     font-size: 15px;
-    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
   }
 </style>
 

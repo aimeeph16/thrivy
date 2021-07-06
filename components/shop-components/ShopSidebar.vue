@@ -16,8 +16,8 @@
     <div class="price-range"><!--price-range-->
       <h2>Price Range</h2>
       <div class="well">
-        <input type="number" name="from_price" placeholder="From $" class="form-control" style="margin-bottom: 5px" @change="updateFromPrice" :value="this.$store.state.general.shop_filter.from_price" />
-        <input type="number" name="to_price" placeholder="To $" class="form-control" @change="updateToPrice" :value="this.$store.state.general.shop_filter.to_price" />
+        <input type="number" name="from_price" placeholder="From Rp." class="form-control" style="margin-bottom: 5px" @change="updateFromPrice" :value="this.$store.state.general.shop_filter.from_price" />
+        <input type="number" name="to_price" placeholder="To Rp." class="form-control" @change="updateToPrice" :value="this.$store.state.general.shop_filter.to_price" />
       </div>
     </div><!--/price-range-->
   </div>

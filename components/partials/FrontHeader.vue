@@ -5,15 +5,18 @@
         <div class="row">
           <div class="col-sm-4">
             <div class="logo pull-left">
-              <nuxt-link to="/"><img src="/images/home/logo.png?93be8c&93be8c" alt="" /></nuxt-link>
+              <nuxt-link to="/"><img src="/assets2/images/thrivy logo_yelo.png" alt="" /></nuxt-link>
+              <b>THRIVY</b>
             </div>
           </div>
           <div class="col-sm-8">
             <div class="shop-menu pull-right">
               <ul class="nav navbar-nav">
                 <li><nuxt-link to="/account"><i class="fa fa-user"></i> Account</nuxt-link></li>
+                <!--
                 <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                 <li><nuxt-link to="/orders"><i class="fa fa-list"></i> My Orders</nuxt-link></li>
+                -->
                 <li><nuxt-link to="/cart"><i class="fa fa-shopping-cart"></i> Cart <span class="badge badge-danger" v-if="this.cart.length > 0">{{this.cart.length}}</span></nuxt-link></li>
                 <li v-if="!this.isLogged"><nuxt-link to="/login"><i class="fa fa-sign-in"></i> Login</nuxt-link></li>
                 <li v-if="this.isLogged"><a href="#" v-on:click.prevent="signout()"><i class="fa fa-sign-out"></i> Sign out</a></li>
@@ -43,10 +46,10 @@
                   <a href="#">Categories<i class="fa fa-angle-down"></i></a>
                   <CategoryTree v-if="this.categoriesTree.length" :dataTree="categoriesTree"></CategoryTree>
                 </li>
-                <li><nuxt-link to="/contactus" :class="{active: this.$route.path.indexOf('contactus') !== -1}">Contact</nuxt-link></li>
               </ul>
             </div>
           </div>
+          <!--
           <div class="col-sm-3">
             <form method="get" @submit.prevent="search()">
               <div class="search_box pull-right">
@@ -54,6 +57,7 @@
               </div>
             </form>
           </div>
+          -->
         </div>
       </div>
     </div><!--/header-bottom-->
@@ -114,13 +118,25 @@
     }
 </script>
 <style scoped>
+  /*
   .search_box input {
     font-size: 18px;
     color: #424040;
   }
+  */
   .badge-danger {
     color: #fff;
     background-color: #dc3545;
+  }
+  .col-sm-4 img {
+    max-width: 15%;
+    height: auto;
+  }
+  .col-sm-4 b {
+    color: #FDD935;
+    font-family: "Museo-sans-rounded", sans-serif;
+    font-weight: 500;
+    padding-left: 10px;
   }
 </style>
 
