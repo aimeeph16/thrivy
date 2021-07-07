@@ -72,7 +72,7 @@
 }
 
 .footer-widget .col-sm-2{
-	width: 33%;
+	width: 40%;
 	display: inline-block;
 	margin-bottom: 50px;
 }
@@ -166,6 +166,7 @@
 	background: rgba(0, 0, 0, 0.5);
     padding-top: 15px;
 	padding-bottom: 0;
+	
 }
 
 .mainmenu ul li:last-child{
@@ -272,8 +273,13 @@ ul.sub-menu{
 	margin-bottom: 40px;
 }
 
-.well{
-	display: inline-block;
+.well{  
+	position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+	margin-top: 100px;
+    line-height: 20px;
 }
 
 }
@@ -524,11 +530,11 @@ ul.sub-menu{
 	float: none;
 }
 
-/*
-.well{
-	
+
+.well{  
+	display: inherit;
 }
-*/
+
 
 }
 

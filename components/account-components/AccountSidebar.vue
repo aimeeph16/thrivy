@@ -31,16 +31,16 @@
 </script>
 <style scoped>
   a {
-    color: #FE980F !important;
+    color: #FDD935 !important;
   }
   .nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
-    background-color: #FE980F;
+    background-color: #FDD935;
     color: #fff !important;
   }
   a:hover, a:focus {
     color: #fff !important;
   }
   .nav>li>a:hover, .nav>li>a:focus {
-    background-color: #FE980F !important;
+    background-color: #FDD935 !important;
   }
 </style>

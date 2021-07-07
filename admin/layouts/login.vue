@@ -7,7 +7,7 @@
             <div class="login-content">
               <div class="login-logo">
                 <a href="#">
-                  <strong>Thrivy</strong> 
+                  <strong>THRIVY</strong> 
                 </a>
               </div>
               <Nuxt/>
@@ -28,7 +28,7 @@
 
 <style scoped>
   .login-logo a {
-    color: #6c757d;
+    color: #FDD935;
     font-size: 31px;
   }
 

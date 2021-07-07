@@ -85,6 +85,7 @@
           }
         },
         methods: {
+          /*
           search() {
             // reset shop filter
             this.$store.dispatch('general/resetShopFilter');
@@ -92,6 +93,7 @@
             this.$router.push({ path: "/search", query: {keyword: this.keyword}});
             this.$store.dispatch('general/fetchShopProducts');
           },
+          */
           signout() {
             this.$axios.setHeader('Authorization', "Bearer " + localStorage.getItem('auth_token'));
             this.$axios.get('/api/logout').then(response => {
