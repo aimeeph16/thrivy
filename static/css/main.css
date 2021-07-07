@@ -1518,21 +1518,19 @@ h2.title {
 
 #form {
   display: block;
-  margin-bottom: 185px;
-  margin-top: 185px;
+  margin-bottom: 100px;
+  margin-top: 100px;
   overflow: hidden;
 }
 
 .login-form {
-  
 }
 
 .signup-form {
-
 }
 
 .login-form h2, .signup-form h2 {
-  color: white;
+  color: #FFFFFF;
   font-family: "Museo-sans-rounded", sans-serif;
   font-size: 20px;
   font-weight: 800;
@@ -1582,6 +1580,12 @@ h2.title {
   cursor: pointer;
 }
 
+.login-form form button:hover, .signup-form form button:hover {
+  background: #f1ce30;
+  color: white;
+  cursor: pointer;
+}
+
 .login-form label{
 
 }
@@ -1599,6 +1603,7 @@ h2.title {
 
 .or{
   background: #FDD935;
+  /*border: 2px solid white;*/
   border-radius: 40px;
   color: black;
   font-family: "Museo-sans-rounded", sans-serif;

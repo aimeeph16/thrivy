@@ -282,6 +282,14 @@ ul.sub-menu{
     line-height: 20px;
 }
 
+.signup-form {
+	margin-top: 6rem;
+}
+
+.or 
+{
+	display: none;
+}
 }
 
 /* XS Portrait */
@@ -336,6 +344,10 @@ ul.sub-menu{
 .header-middle .col-sm-4{
 	text-align: center;
 	overflow: inherit;
+}
+
+.col-sm-8 {
+	position: relative;
 }
 
 .shop-menu .nav.navbar-nav {
@@ -535,6 +547,14 @@ ul.sub-menu{
 	display: inherit;
 }
 
+.signup-form {
+	margin-top: 6rem;
+}
+
+.or 
+{
+	display: none;
+}
 
 }
 
